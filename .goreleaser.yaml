@@ -20,10 +20,48 @@ builds:
 
 dockers:
   - image_templates:
-    - cbrand/vodafone-billing-downloader:latest
-    - cbrand/vodafone-billing-downloader:{{.Version}}
-    - ghcr.io/cbrand/vodafone-billing-downloader:latest
-    - ghcr.io/cbrand/vodafone-billing-downloader:{{.Version}}
+    - 'cbrand/vodafone-billing-downloader:{{ .Tag }}-amd64'
+    use: buildx
+    build_flag_templates:
+    - "--pull"
+    - "--platform=linux/amd64"
+  - image_templates:
+    - 'cbrand/vodafone-billing-downloader:{{ .Tag }}-arm64'
+    use: buildx
+    build_flag_templates:
+    - "--pull"
+    - "--platform=linux/arm64"
+    goarch: arm64
+  - image_templates:
+    - 'ghcr.io/cbrand/vodafone-billing-downloader:{{ .Tag }}-amd64'
+    use: buildx
+    build_flag_templates:
+    - "--pull"
+    - "--platform=linux/amd64"
+  - image_templates:
+    - 'ghcr.io/cbrand/vodafone-billing-downloader:{{ .Tag }}-arm64'
+    use: buildx
+    build_flag_templates:
+    - "--pull"
+    - "--platform=linux/arm64"
+    goarch: arm64
+docker_manifests:
+- name_template: 'cbrand/vodafone-billing-downloader:{{ .Version }}'
+  image_templates: &image_templates
+  - 'cbrand/vodafone-billing-downloader:{{ .Tag }}-amd64'
+  - 'cbrand/vodafone-billing-downloader:{{ .Tag }}-arm64'
+- name_template: 'cbrand/vodafone-billing-downloader:latest'
+  image_templates: &image_templates
+  - 'cbrand/vodafone-billing-downloader:{{ .Tag }}-amd64'
+  - 'cbrand/vodafone-billing-downloader:{{ .Tag }}-arm64'
+- name_template: 'ghcr.io/cbrand/vodafone-billing-downloader:latest'
+  image_templates: &image_templates
+  - 'ghcr.io/cbrand/vodafone-billing-downloader:{{ .Tag }}-amd64'
+  - 'ghcr.io/cbrand/vodafone-billing-downloader:{{ .Tag }}-arm64'
+- name_template: 'ghcr.io/cbrand/vodafone-billing-downloader:{{.Version}}'
+  image_templates: &image_templates
+  - 'ghcr.io/cbrand/vodafone-billing-downloader:{{ .Tag }}-amd64'
+  - 'ghcr.io/cbrand/vodafone-billing-downloader:{{ .Tag }}-arm64'
 
 archives:
   - format: tar.gz
