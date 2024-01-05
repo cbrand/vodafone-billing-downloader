@@ -6,10 +6,10 @@ import (
 	commands "github.com/cbrand/vodafone-billing-downloader/cli/vodafone-billing-downloader"
 )
 
-const Version = "0.0.1"
+var version string
 
 func main() {
-	cli := commands.GetCLI(Version)
+	cli := commands.GetCLI(version)
 	err := cli.Run(os.Args)
 	if err != nil {
 		os.Exit(1)
