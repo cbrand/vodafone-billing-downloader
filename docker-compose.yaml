@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  billing-downloader:
+    image: ghcr.io/cbrand/vodafone-billing-downloader:latest
+    command: dump
+    environment:
+      VODAFONE_USERNAME:
+      VODAFONE_PASSWORD:
+      DIRECTORY: /data
+    volumes:
+      - ./data:/data
+    restart: no
