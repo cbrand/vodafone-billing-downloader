@@ -2,6 +2,12 @@
 
 A script which dumps all cable internet bills from www.vodafone.de to a directory or uploads them to [paperless-ngx](https://docs.paperless-ngx.com/).
 
+## Motivation
+
+I tried to get from Vodafone.de multiple times my invoices via E-Mail directly as PDF.
+It resulted in a lot of wasted time on the telephone and no real result.
+This is why I created this script which simulates the Web client on Vodafone to automatically scan an download all invoices to PDF.
+
 ## Usage
 
 The Vodafone Billing Downloader can be used with the following command line arguments:
