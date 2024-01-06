@@ -4,7 +4,7 @@ A script which dumps all cable internet bills from www.vodafone.de to a director
 
 ## Motivation
 
-I tried to get from Vodafone.de multiple times my invoices via E-Mail directly as PDF.
+I tried to get from Vodafone.de multiple times my invoices via email directly as PDF.
 It resulted in a lot of wasted time on the telephone and no real result.
 This is why I created this script which simulates the Web client on Vodafone to automatically scan an download all invoices to PDF.
 
